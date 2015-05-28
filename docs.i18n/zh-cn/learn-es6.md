@@ -1,10 +1,9 @@
 ---
 layout: docs
-title: Learn ES2015
+title: Learn ES6
 description: A detailed overview of ECMAScript 6 features.
-permalink: /docs/learn-es2015/
+permalink: /docs/learn-es6/
 redirect_from:
- - /docs/learn-es6/
  - /features.html
  - /docs/tour/
 ---
@@ -12,39 +11,31 @@ redirect_from:
 <blockquote class="babel-callout babel-callout-info">
   <h4>es6features</h4>
   <p>
-    This document is taken from Luke Hoban's excellent
-    <a href="http://git.io/es6features">es6features</a> repo. Go give it a star
-    on GitHub!
+    这篇文档来自 Luke Hoban 的
+    <a href="http://git.io/es6features">es6features</a> ，这是个很棒的开源库。
+    去 Github 给他加个 Star 吧！
   </p>
 </blockquote>
 
 <blockquote class="babel-callout babel-callout-info">
   <h4>REPL</h4>
   <p>
-    Be sure to try these features out in the online
+    在线试用这些新特性：
     <a href="/repl">REPL</a>.
   </p>
 </blockquote>
 
-## Introduction
+## 简介
 
-> ECMAScript 6 is the upcoming version of the ECMAScript standard.  This
-standard is targeting ratification in June 2015.  ES2015 is a significant update to
-the language, and the first update to the language since ES5 was standardized in
-2009. Implementation of these features in major JavaScript engines is
-[underway now](http://kangax.github.io/es5-compat-table/es6/).
+> ECMAScript 6 是即将到来的下一个 ECMAScript 标准版本。这个标准计划在 2015 年 6 月批准通过。ES6 对 JavaScript 语言有非常重大的更新，也是 ES5 标准通过以来第一次更新。JavaScript 引擎也正在陆续对这些新特性[提供支持](http://kangax.github.io/es5-compat-table/es6/)。
 
-See the [draft ES2015 standard](https://people.mozilla.org/~jorendorff/es6-draft.html)
-for full specification of the ECMAScript 6 language.
+完整的 ECMAScript 6 规范草案在[这里](https://people.mozilla.org/~jorendorff/es6-draft.html)
 
-## ECMAScript 6 Features
+## ECMAScript 6 新特性
 
-### Arrows
+### 箭头函数
 
-Arrows are a function shorthand using the `=>` syntax.  They are syntactically
-similar to the related feature in C#, Java 8 and CoffeeScript.  They support
-both expression and statement bodies.  Unlike functions, arrows share the same
-lexical `this` as their surrounding code.
+箭头函数是函数的简写方式，使用 `=>` 语法。在语法上看起来很像 C#, Java 8, 和 CoffeeScript 里的相关特性。函数体内可以包含表达式和声明。 跟普通函数不同的是，箭头函数跟它所在的上下文有相同的 `this` 作用域。
 
 ```js
 // Expression bodies
@@ -68,12 +59,9 @@ var bob = {
 }
 ```
 
-### Classes
+### 类 (Classes)
 
-ES2015 classes are a simple sugar over the prototype-based OO pattern.  Having a
-single convenient declarative form makes class patterns easier to use, and
-encourages interoperability.  Classes support prototype-based inheritance, super
-calls, instance and static methods and constructors.
+ES6 的类是一个语法糖，同样还是基于 prototype 的面向对象思想实现的。 由于它的声明方式非常方便，所以用起来非常简单，也更有利于代码的一致性。它支持基于 prototype 的继承，访问父类，实例，静态方法和构造函数。
 
 ```js
 class SkinnedMesh extends THREE.Mesh {
@@ -95,13 +83,9 @@ class SkinnedMesh extends THREE.Mesh {
 }
 ```
 
-### Enhanced Object Literals
+### 增强的对象字面量 (Enhanced Object Literals)
 
-Object literals are extended to support setting the prototype at construction,
-shorthand for `foo: foo` assignments, defining methods and making super calls.
-Together, these also bring object literals and class declarations closer
-together, and let object-based design benefit from some of the same
-conveniences.
+对象字面量在原来的基础上得到了扩展：设置 prototype 构造器，对 `foo: foo` 赋值语句的简写，直接定义函数并通过 super 访问父类。这些特性使得对象字面量和类的声明越来越像了，也使得基于对象的设计越来越方便。
 
 ```js
 var obj = {
@@ -121,19 +105,14 @@ var obj = {
 
 <blockquote class="babel-callout babel-callout-warning">
   <p>
-    <code>__proto__</code> support comes from the JavaScript engine running
-    your program. Although most support the now standard property,
-    <a href="http://kangax.github.io/compat-table/es6/#__proto___in_object_literals">some do not</a>.
+    <code>__proto__</code> 已经得到 JavaScript 引擎的支持。虽然大部分都已经基于现有标准提供支持, 但还是有
+    <a href="http://kangax.github.io/compat-table/es6/#__proto___in_object_literals">一些</a> 并不支持。
   </p>
 </blockquote>
 
-### Template Strings
+### 模板字符串
 
-Template strings provide syntactic sugar for constructing strings. This is
-similar to string interpolation features in Perl, Python and more. Optionally, a
-tag can be added to allow the string construction to be customized, avoiding
-injection attacks or constructing higher level data structures from string
-contents.
+模板字符串是对针对结构化字符串的一个语法糖，类似 Perl, Python 的插值字符串的特性。可以定义好字符串的结构，在模板字符串里添加一个标记，不必打断字符串就能将数值插入进去。还能根据结构化的数据生成字符串内容。
 
 ```js
 // Basic literal string creation
@@ -435,7 +414,7 @@ alert("2π = " + exp(pi, e));
 <blockquote class="babel-callout babel-callout-info">
   <h4>Module Formatters</h4>
   <p>
-    Babel can transpile ES2015 Modules to several different formats including
+    Babel can transpile ES6 Modules to several different formats including
     Common.js, AMD, System, and UMD. You can even create your own. For more
     details see the <a href="/docs/usage/modules">modules docs</a>.
   </p>
@@ -629,7 +608,7 @@ c["key"] === undefined
 
 ### Subclassable Built-ins
 
-In ES2015, built-ins like `Array`, `Date` and DOM `Element`s can be subclassed.
+In ES6, built-ins like `Array`, `Date` and DOM `Element`s can be subclassed.
 
 ```js
 // User code of Array subclass
@@ -775,7 +754,7 @@ function factorial(n, acc = 1) {
 }
 
 // Stack overflow in most implementations today,
-// but safe on arbitrary inputs in ES2015
+// but safe on arbitrary inputs in eS6
 factorial(100000)
 ```
 
