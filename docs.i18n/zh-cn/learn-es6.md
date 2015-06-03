@@ -134,11 +134,9 @@ GET`http://foo.org/bar?a=${a}&b=${b}
       "bar": ${bar}}`(myOnReadyStateChangeHandler);
 ```
 
-### Destructuring
+### 解构
 
-Destructuring allows binding using pattern matching, with support for matching
-arrays and objects.  Destructuring is fail-soft, similar to standard object
-lookup `foo["bar"]`, producing `undefined` values when not found.
+解构可以绑定模式匹配，支持匹配数组（arrays）和对象（objects）。解构是软失效（fail-soft）的，类似标准的对象查找 `foo["bar"]`，当值不存在时，产生 `undefined`。
 
 ```js
 // list matching
@@ -169,9 +167,7 @@ a === 1;
 
 ### Default + Rest + Spread
 
-Callee-evaluated default parameter values. Turn an array into consecutive
-arguments in a function call. Bind trailing parameters to an array. Rest
-replaces the need for `arguments` and addresses common cases more directly.
+default 设置默认参数值：
 
 ```js
 function f(x, y=12) {
@@ -180,6 +176,9 @@ function f(x, y=12) {
 }
 f(3) == 15
 ```
+
+rest 将紧随的连续参数转化为数组：
+
 ```js
 function f(x, ...y) {
   // y is an Array
@@ -187,6 +186,9 @@ function f(x, ...y) {
 }
 f(3, "hello", true) == 6
 ```
+
+spread 将一个数组扩展为连续的参数：
+
 ```js
 function f(x, y, z) {
   return x + y + z;
@@ -197,9 +199,7 @@ f(...[1,2,3]) == 6
 
 ### Let + Const
 
-Block-scoped binding constructs. `let` is the new `var`. `const` is
-single-assignment. Static restrictions prevent use before assignment.
-
+块级作用域 `let` 可以认为是一种新的 `var`， `const` 是一次性赋值，是一种静态约束。
 
 ```js
 function f() {
@@ -219,10 +219,7 @@ function f() {
 
 ### Iterators + For..Of
 
-Iterator objects enable custom iteration like CLR IEnumerable or Java
-Iterable. Generalize `for..in` to custom iterator-based iteration with
-`for..of`. Don’t require realizing an array, enabling lazy design patterns like
-LINQ.
+迭代器对象允许自定义迭代方法，就像 CLR 的 IEnumerable 或 Java 的 Iterable 那样。从 `for..in` 转而使用基于迭代器的 `for..of` 方法。不用去自己实现一个数组，支持类似 LINQ 的懒设计模式。
 
 ```js
 let fibonacci = {
@@ -245,6 +242,7 @@ for (var n of fibonacci) {
 }
 ```
 
+迭代器是基于 duck-typed 接口（仅使用 [TypeScript](http://typescriptlang.org)
 Iteration is based on these duck-typed interfaces (using
 [TypeScript](http://typescriptlang.org) type syntax for exposition only):
 
