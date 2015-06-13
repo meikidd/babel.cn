@@ -242,9 +242,8 @@ for (var n of fibonacci) {
 }
 ```
 
-迭代器是基于 duck-typed 接口（仅使用 [TypeScript](http://typescriptlang.org)
-Iteration is based on these duck-typed interfaces (using
-[TypeScript](http://typescriptlang.org) type syntax for exposition only):
+
+下面的迭代器基于 duck-typed 接口（使用 [TypeScript](http://typescriptlang.org) 风格语法)：
 
 ```ts
 interface IteratorResult {
@@ -259,22 +258,21 @@ interface Iterable {
 }
 ```
 
+
+
 <blockquote class="babel-callout babel-callout-info">
-  <h4>Support via polyfill</h4>
+  <h4>通过 polyfill 使用</h4>
   <p>
-    In order to use Iterators you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
+    必须通过 Babel <a href="/docs/usage/polyfill">polyfill</a> 来使用 Iterators 。
   </p>
 </blockquote>
 
+
 ### Generators
 
-Generators simplify iterator-authoring using `function*` and `yield`. A function
-declared as function* returns a Generator instance. Generators are subtypes of
-iterators which include additional `next` and `throw`. These enable values to
-flow back into the generator, so `yield` is an expression form which returns a
-value (or throws).
+Generators 通过 `function*` 和 `yield` 来生成一个 iterator，即通过 function* 声明的函数将返回一个 Generator 实例。Generators 包含 `next` 和 `throw` 两个方法，可以获取每一个 `yield` 表达式右边的值。
 
-Note: Can also be used to enable ‘await’-like async programming, see also ES7 `await` [proposal](https://github.com/lukehoban/ecmascript-asyncawait).
+提示：也可以用 Generators 写出类似 'await' 风格的异步程序，参考 ES7 `await` [proposal](https://github.com/lukehoban/ecmascript-asyncawait)。
 
 ```js
 var fibonacci = {
@@ -297,8 +295,7 @@ for (var n of fibonacci) {
 }
 ```
 
-The generator interface is (using [TypeScript](http://typescriptlang.org) type
-syntax for exposition only):
+下面是 generator 接口 (使用 [TypeScript](http://typescriptlang.org) 风格语法):
 
 ```ts
 interface Generator extends Iterator {
@@ -308,16 +305,15 @@ interface Generator extends Iterator {
 ```
 
 <blockquote class="babel-callout babel-callout-info">
-  <h4>Support via polyfill</h4>
+  <h4>通过 polyfill 使用</h4>
   <p>
-    In order to use Generators you must include the Babel <a href="/docs/usage/polyfill">polyfill</a>.
+    必须通过 Babel  <a href="/docs/usage/polyfill">polyfill</a>. 来使用 Generator。
   </p>
 </blockquote>
 
-### Comprehensions
+### 解析 Comprehensions
 
-Array and generator comprehensions provide simple declarative list processing
-similar as used in many functional programming patterns.
+数组和 generator 的解析给我们提供了一种简单的方式来声明列表，就像许多其他函数式编程语言中那样。
 
 ```js
 // Array comprehensions
@@ -336,13 +332,15 @@ var results = (
 ```
 
 <blockquote class="babel-callout babel-callout-warning">
-  <h4>Disabled by default</h4>
+  <h4>默认是不可用的</h4>
   <p>
-    These are only available if you enable experimental support. See <a href="/docs/usage/experimental">experimental usage</a> for more information.
+    必须开启实验特性才能使用解析，查看更多 <a href="/docs/usage/experimental">实验特性</a>。
   </p>
 </blockquote>
 
 ### Unicode
+
+向下兼容地实现了对 Unicode 全字符集的支持，包括新的 unicode 字面量形式和新的正则表达式 `u` 模式。这些新特性使得 JavaScript 可以更好地创建全球化应用。
 
 Non-breaking additions to support full Unicode, including new unicode literal
 form in strings and new RegExp `u` mode to handle code points, as well as new
@@ -368,12 +366,9 @@ for(var c of "𠮷") {
 }
 ```
 
-### Modules
+### 模块 Modules
 
-Language-level support for modules for component definition. Codifies patterns
-from popular JavaScript module loaders (AMD, CommonJS). Runtime behaviour
-defined by a host-defined default loader. Implicitly async model – no code
-executes until requested modules are available and processed.
+从编程语言层面支持模块声明，类似当前流行的 JavaScript 模块加载机制 (AMD, CommonJS). 运行时的行为由一个默认的加载器决定，特别是异步模块，只有当模块加载完之后才能执行。
 
 ```js
 // lib/math.js
@@ -393,7 +388,7 @@ import {sum, pi} from "lib/math";
 alert("2π = " + sum(pi, pi));
 ```
 
-Some additional features include `export default` and `export *`:
+一些附加特性，例如 `export default` 和 `export *`：
 
 ```js
 // lib/mathplusplus.js
@@ -410,8 +405,9 @@ alert("2π = " + exp(pi, e));
 ```
 
 <blockquote class="babel-callout babel-callout-info">
-  <h4>Module Formatters</h4>
+  <h4>模块格式</h4>
   <p>
+    Babel 可以将 ES6 模块转换为各种不同的
     Babel can transpile ES6 Modules to several different formats including
     Common.js, AMD, System, and UMD. You can even create your own. For more
     details see the <a href="/docs/usage/modules">modules docs</a>.
